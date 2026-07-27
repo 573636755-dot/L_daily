@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国国际货代物流行业「空运业务」50强</title>
+<style>
+  :root{
+    --bg:#f5f7fa;
+    --card:#ffffff;
+    --ink:#1f2a37;
+    --sub:#64748b;
+    --line:#e5e9f0;
+    --brand:#0e7490;
+    --brand2:#0891b2;
+    --accent:#f59e0b;
+    --soft:#ecfeff;
+    --soft2:#fff7ed;
+    --shadow:0 1px 3px rgba(15,23,42,.08),0 8px 24px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 64px}
+
+  /* Header */
+  header.hero{
+    background:linear-gradient(135deg,#0e7490,#0891b2 55%,#06b6d4);
+    color:#fff;border-radius:18px;padding:30px 32px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  header.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;background:rgba(255,255,255,.08);border-radius:50%}
+  header.hero::before{content:"";position:absolute;right:80px;bottom:-80px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%}
+  .hero h1{font-size:26px;letter-spacing:.5px;position:relative;z-index:1}
+  .hero .tag{display:inline-block;background:rgba(255,255,255,.18);padding:3px 12px;border-radius:999px;font-size:13px;margin-bottom:12px;position:relative;z-index:1}
+  .hero p{font-size:14px;opacity:.92;margin-top:10px;position:relative;z-index:1;max-width:760px}
+  .hero .src{font-size:12.5px;opacity:.85;margin-top:14px;position:relative;z-index:1}
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+  .stat .n{font-size:26px;font-weight:700;color:var(--brand)}
+  .stat .l{font-size:12.5px;color:var(--sub);margin-top:2px}
+
+  /* Toolbar */
+  .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:6px 0 20px}
+  .views{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px;box-shadow:var(--shadow)}
+  .views button{border:0;background:transparent;padding:9px 18px;border-radius:9px;font-size:14px;color:var(--sub);cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:600;transition:.18s}
+  .views button.active{background:var(--brand);color:#fff}
+  .search{position:relative;flex:1;min-width:220px;max-width:360px}
+  .search input{width:100%;padding:10px 14px 10px 38px;border:1px solid var(--line);border-radius:12px;font-size:14px;background:#fff;box-shadow:var(--shadow);outline:none}
+  .search input:focus{border-color:var(--brand2)}
+  .search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.5}
+  .filter select{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:14px;color:var(--ink);box-shadow:var(--shadow);outline:none}
+
+  /* Card view */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;box-shadow:var(--shadow);position:relative;transition:.18s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(15,23,42,.12)}
+  .card .top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .rank{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff;background:linear-gradient(135deg,#0891b2,#06b6d4);flex-shrink:0}
+  .rank.r1{background:linear-gradient(135deg,#d97706,#f59e0b)}
+  .rank.r2{background:linear-gradient(135deg,#64748b,#94a3b8)}
+  .rank.r3{background:linear-gradient(135deg,#b45309,#d97706)}
+  .card .name{font-size:16px;font-weight:700;line-height:1.35}
+  .card .loc{font-size:12.5px;color:var(--sub);margin-top:2px;display:flex;align-items:center;gap:5px}
+  .card .desc{font-size:13.5px;color:#475569;margin:10px 0 12px;flex:1}
+  .card .foot{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px dashed var(--line);padding-top:10px}
+  .rev{font-size:13px}
+  .rev .k{color:var(--sub);font-size:11.5px}
+  .rev .v{font-weight:700;color:var(--brand);font-size:15px}
+  .rev .na{color:#94a3b8;font-weight:600;font-size:13px}
+  .pill{font-size:11px;background:var(--soft);color:var(--brand);padding:3px 9px;border-radius:999px;font-weight:600}
+
+  /* Table view */
+  .tablewrap{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  thead th{background:#f1f5f9;color:#334155;text-align:left;padding:13px 14px;font-weight:700;cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0;border-bottom:1px solid var(--line)}
+  thead th:hover{color:var(--brand)}
+  thead th .ar{font-size:10px;opacity:.45;margin-left:4px}
+  tbody td{padding:12px 14px;border-bottom:1px solid #f1f5f9;vertical-align:top}
+  tbody tr:hover{background:#f8fafc}
+  .rk{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;border-radius:8px;background:var(--soft);color:var(--brand);font-weight:800}
+  .rk.g1{background:#fef3c7;color:#b45309}
+  .td-name{font-weight:700;color:var(--ink)}
+  .td-loc{color:var(--sub);font-size:12.5px;white-space:nowrap}
+  .td-desc{color:#475569;max-width:420px}
+  .td-rev{font-weight:700;color:var(--brand);white-space:nowrap}
+  .td-rev.na{color:#94a3b8;font-weight:600}
+
+  .note{background:var(--soft2);border:1px solid #fed7aa;color:#92400e;border-radius:12px;padding:14px 16px;font-size:12.8px;margin:22px 0 4px;line-height:1.7}
+  .note b{color:#7c2d12}
+
+  footer{text-align:center;color:var(--sub);font-size:12px;margin-top:30px}
+
+  @media(max-width:640px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .hero h1{font-size:21px}
+    .td-desc{display:none}
+  }
+
+  /* Top QR banner */
+  .topqr{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:22px}
+  .qr-card{flex:1;min-width:260px;display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .qr-card .qtxt{flex:1;min-width:0}
+  .qr-card .qtxt strong{display:block;font-size:16px;color:var(--ink);letter-spacing:.3px}
+  .qr-card .qtxt span{display:block;font-size:13px;color:var(--sub);margin-top:4px}
+  .qr-card .qtxt em{display:block;font-size:12px;color:var(--brand);margin-top:6px;font-style:normal;font-weight:600}
+  .qr-card img{width:96px;height:96px;border-radius:12px;object-fit:cover;border:1px solid #e2e8f0;flex-shrink:0;cursor:pointer;transition:.2s}
+  .qr-card img:hover{transform:scale(1.05);box-shadow:0 4px 16px rgba(15,23,42,.18)}
+  .qr-card.personal{background:linear-gradient(135deg,#ffffff,#ecfeff)}
+  .qr-card.group{background:linear-gradient(135deg,#ffffff,#fff7ed)}
+  .qr-card .corner{position:absolute;right:-40px;top:-40px;width:120px;height:120px;border-radius:50%;background:rgba(14,116,144,.05)}
+  .qr-zoom{position:fixed;inset:0;background:rgba(15,23,42,.72);display:none;align-items:center;justify-content:center;z-index:99;cursor:zoom-out}
+  .qr-zoom.show{display:flex}
+  .qr-zoom img{width:300px;height:300px;border-radius:16px;background:#fff;padding:12px;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topqr">
+    <div class="qr-card personal">
+      <div class="corner"></div>
+      <div class="qtxt">
+        <strong>👋 扫码加我微信</strong>
+        <span>王波 · 四川成都</span>
+        <em>欢迎交流空运货代与供应链合作</em>
+      </div>
+      <img src="wechat-qr.jpg" alt="微信二维码：王波" onclick="zoomQR(this.src)">
+    </div>
+    <div class="qr-card group">
+      <div class="corner"></div>
+      <div class="qtxt">
+        <strong>💬 扫码进群交流</strong>
+        <span>凡信汇益供应链密谋群</span>
+        <em>行业资讯 · 资源对接 · 干货分享</em>
+      </div>
+      <img src="group-qr.jpg" alt="群二维码：凡信汇益交流群" onclick="zoomQR(this.src)">
+    </div>
+  </div>
+  <div class="qr-zoom" id="qrZoom" onclick="closeQR()"><img src="" alt="二维码大图"></div>
+
+  <header class="hero">
+    <span class="tag">中国国际货运代理协会（CIFA）权威榜单</span>
+    <h1>中国国际货代物流行业「空运业务」50强</h1>
+    <p>按企业<b>空运业务总收入</b>排名的全国前50强货代物流企业。本榜单反映中国大陆及港澳地区在国际航空货运代理领域的头部阵营与区域格局。</p>
+    <div class="src">数据来源：《2024年度中国国际货代物流行业数据 · 空运业务总收入前50企业》（中国国际货运代理协会，2025年9月25日发布）｜ 排名依据：2024年度空运业务总收入</div>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="toolbar">
+    <div class="views">
+      <button id="btnCard" class="active" onclick="setView('card')">▦ 卡片视图</button>
+      <button id="btnTable" onclick="setView('table')">▤ 数据视图</button>
+    </div>
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" type="text" placeholder="搜索公司名称 / 城市…" oninput="render()">
+    </div>
+    <div class="filter">
+      <select id="cityFilter" onchange="render()">
+        <option value="">全部地区</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="cardView" class="grid"></div>
+
+  <div id="tableView" style="display:none">
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th onclick="sortBy('rank')">排名<span class="ar" id="ar-rank"></span></th>
+            <th onclick="sortBy('name')">公司名称<span class="ar" id="ar-name"></span></th>
+            <th onclick="sortBy('city')">总部地区<span class="ar" id="ar-city"></span></th>
+            <th>简要说明</th>
+            <th onclick="sortBy('rev')">空运业务收入（参考）<span class="ar" id="ar-rev"></span></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="note" id="note"></div>
+
+  <footer>榜单排名与名录来自中国国际货运代理协会（CIFA）官方发布 ｜ 本页为信息整理与可视化，供研究与参考之用</footer>
+</div>
+
+<script>
+// 2024年度中国国际货代物流行业数据 · 空运业务总收入前50企业
+// rank: 排名 | name: 公司 | city: 总部城市 | province: 省份 | desc: 简要说明
+// rev: 历史参考空运营业额（2017年度·万元，CIFA公开数据）；2024逐家营收见蓝皮书未公开，记为 null
+const DATA = [
+  {rank:1, name:"爱派克斯国际物流(中国)有限公司", city:"上海", province:"上海市", rev:355473.88, desc:"全球领先的空运货代企业，专注跨境空运、电商物流与供应链解决方案，长期位居中国空运货代榜首。"},
+  {rank:2, name:"中国外运股份有限公司", city:"北京", province:"北京市", rev:516282.00, desc:"招商局旗下综合物流龙头，空运业务覆盖国际航空货运代理、仓储与跨境电商，全球网络完备。"},
+  {rank:3, name:"敦豪全球货运(中国)有限公司", city:"北京", province:"北京市", rev:736175.00, desc:"DHL全球货运中国区，依托德邮集团全球网络提供国际空运、海运及合同物流。"},
+  {rank:4, name:"运连网科技有限公司", city:"深圳", province:"广东省", rev:null, desc:"数字化跨境物流平台企业，以空运、海运及海外仓一体化服务见长。"},
+  {rank:5, name:"广州欧华国际货运代理有限公司", city:"广州", province:"广东省", rev:119334.98, desc:"专注国际空运与海运货代，在华南及跨境电商物流领域竞争力突出（AWOT）。"},
+  {rank:6, name:"港中旅华贸国际物流股份有限公司", city:"上海", province:"上海市", rev:340809.00, desc:"A股上市综合物流服务商，空运、海运货代及工程物流并重，网络覆盖全球（603128）。"},
+  {rank:7, name:"深圳市涵文国际货运代理有限公司", city:"深圳", province:"广东省", rev:46980.05, desc:"华南地区优势空运货代，深耕国际航空货运与电商空运业务。"},
+  {rank:8, name:"唯凯国际物流股份有限公司", city:"上海", province:"上海市", rev:203121.20, desc:"上海本土空运货代企业，提供国际空运、包机及保税物流等服务。"},
+  {rank:9, name:"日通国际物流(中国)有限公司", city:"上海", province:"上海市", rev:177703.20, desc:"日本通运（Nippon Express）中国子公司，全球网络支撑国际空运与跨境物流。"},
+  {rank:10, name:"中远海运物流供应链有限公司", city:"上海", province:"上海市", rev:null, desc:"中远海运集团物流平台，整合海运、空运与多式联运资源，空运业务快速成长。"},
+  {rank:11, name:"中集世联达物流科技(集团)股份有限公司", city:"深圳", province:"广东省", rev:null, desc:"中集旗下物流科技企业，提供空运、海运及装备物流一体化方案。"},
+  {rank:12, name:"深圳市易速信达供应链有限公司", city:"深圳", province:"广东省", rev:null, desc:"深圳供应链企业，专注跨境空运与电商物流履约。"},
+  {rank:13, name:"民航快递有限责任公司", city:"北京", province:"北京市", rev:84430.00, desc:"依托民航系统背景的快件与航空货运代理企业，服务高端时效件。"},
+  {rank:14, name:"深圳天翼通国际货运代理有限公司", city:"深圳", province:"广东省", rev:59828.25, desc:"深圳空运货代企业，专注国际航空货运与跨境电商物流。"},
+  {rank:15, name:"海程邦达供应链管理股份有限公司", city:"青岛", province:"山东省", rev:79978.00, desc:"A股上市供应链企业，空运、海运货代及场站业务并举，总部青岛（603836）。"},
+  {rank:16, name:"上海立驰行国际货物运输代理有限公司", city:"上海", province:"上海市", rev:null, desc:"上海空运货代企业，提供国际航空货运与物流方案。"},
+  {rank:17, name:"近铁国际物流(中国)有限公司", city:"上海", province:"上海市", rev:168064.21, desc:"日本近铁（KWE）中国子公司，面向电子、汽车等行业提供空运与合同物流。"},
+  {rank:18, name:"广东新瑞恒道投资控股集团有限公司", city:"广州", province:"广东省", rev:null, desc:"广州综合性物流投资集团，布局空运货代与跨境电商供应链。"},
+  {rank:19, name:"鸿霖国际货运代理(上海)有限公司", city:"上海", province:"上海市", rev:null, desc:"上海空运货代企业，专注国际航空货运代理。"},
+  {rank:20, name:"北京泽坤国际货运代理有限公司", city:"北京", province:"北京市", rev:147722.51, desc:"北京空运货代企业，提供国际航空货运与物流服务。"},
+  {rank:21, name:"锦海捷亚国际货运有限公司", city:"上海", province:"上海市", rev:null, desc:"中外合资货代企业，空运、海运货代及展会物流见长。"},
+  {rank:22, name:"中经得美国际快运代理有限公司", city:"北京", province:"北京市", rev:55436.00, desc:"北京国际快运代理企业，专注空运快递与跨境物流。"},
+  {rank:23, name:"铂睿国际物流(北京)有限公司", city:"北京", province:"北京市", rev:null, desc:"北京空运货代企业，提供国际航空货运方案。"},
+  {rank:24, name:"山东朗越国际运输服务有限公司", city:"烟台", province:"山东省", rev:null, desc:"烟台国际运输企业，空运、陆运及跨境电商物流并重。"},
+  {rank:25, name:"北京大田智慧物流有限公司", city:"北京", province:"北京市", rev:null, desc:"大田集团旗下，提供空运货代、智慧物流与供应链服务。"},
+  {rank:26, name:"广州佳联迅物流有限公司", city:"广州", province:"广东省", rev:null, desc:"广州空运货代企业，专注国际航空货运代理。"},
+  {rank:27, name:"日邮物流(中国)有限公司", city:"上海", province:"上海市", rev:80000.00, desc:"日本邮船（NYK）物流中国子公司，全球空运与合同物流服务商。"},
+  {rank:28, name:"江苏飞力达国际物流股份有限公司", city:"昆山", province:"江苏省", rev:null, desc:"A股上市（300240），昆山IT电子行业空运与保税物流专家。"},
+  {rank:29, name:"盛世通物流(厦门)有限公司", city:"厦门", province:"福建省", rev:null, desc:"厦门空运货代企业，专注国际航空货运与跨境物流。"},
+  {rank:30, name:"杭州泛远国际物流有限公司", city:"杭州", province:"浙江省", rev:null, desc:"杭州跨境物流企业，提供空运、海外仓与电商履约。"},
+  {rank:31, name:"航都(厦门)国际货运代理有限公司", city:"厦门", province:"福建省", rev:null, desc:"厦门空运货代企业，专注国际航空货运代理。"},
+  {rank:32, name:"中菲行国际货运代理(上海)有限公司", city:"上海", province:"上海市", rev:null, desc:"台湾中菲行（Dimerco）大陆运营主体，亚洲空运货代优势明显。"},
+  {rank:33, name:"深圳市华展国际物流有限公司", city:"深圳", province:"广东省", rev:null, desc:"深圳综合货代企业，空运、海运及展会物流并举。"},
+  {rank:34, name:"汇利达国际货运代理(广州)有限公司", city:"广州", province:"广东省", rev:null, desc:"广州货代企业，空运、海运及陆运多式联运服务。"},
+  {rank:35, name:"上海高信国际物流有限公司", city:"上海", province:"上海市", rev:null, desc:"上海空运货代企业，提供国际航空货运代理。"},
+  {rank:36, name:"密尔克卫智能供应链服务集团股份有限公司", city:"上海", province:"上海市", rev:null, desc:"A股上市（603713），化工及特种供应链空运、危化物流见长。"},
+  {rank:37, name:"东方国际物流(集团)有限公司", city:"上海", province:"上海市", rev:null, desc:"东方创业旗下，上海本土综合物流，空运货代与外贸供应链并重。"},
+  {rank:38, name:"上海青旅国际货运有限公司", city:"上海", province:"上海市", rev:267969.00, desc:"上海老牌空运货代，国际航空货运与旅游物流结合。"},
+  {rank:39, name:"江苏佳利达国际物流股份有限公司", city:"无锡", province:"江苏省", rev:null, desc:"无锡供应链企业，空运、保税及跨境电商物流。"},
+  {rank:40, name:"罗集帝物流(上海)有限公司", city:"上海", province:"上海市", rev:null, desc:"日本罗集帝（Logitec）中国子公司，面向制造业提供空运与合同物流。"},
+  {rank:41, name:"达升物流股份有限公司", city:"宁波", province:"浙江省", rev:null, desc:"宁波本土货代，空运、海运及拼箱业务并举。"},
+  {rank:42, name:"美设国际物流集团股份有限公司", city:"上海", province:"上海市", rev:null, desc:"上海综合物流集团，空运、海运及工程项目物流全球网络。"},
+  {rank:43, name:"深圳市鸿安货运代理有限公司", city:"深圳", province:"广东省", rev:null, desc:"深圳空运货代企业，专注国际航空货运代理。"},
+  {rank:44, name:"厦门联合物流有限公司", city:"厦门", province:"福建省", rev:null, desc:"厦门综合物流企业，空运货代与跨境供应链服务。"},
+  {rank:45, name:"中外运-日新国际货运有限公司", city:"上海", province:"上海市", rev:null, desc:"中外运与日新合资，上海空运货代与中日航线优势。"},
+  {rank:46, name:"上海华加国际货运代理有限公司", city:"上海", province:"上海市", rev:null, desc:"上海空运货代企业，提供国际航空货运方案。"},
+  {rank:47, name:"厦门华商经纬物流有限公司", city:"厦门", province:"福建省", rev:null, desc:"厦门空运货代企业，专注国际航空货运代理。"},
+  {rank:48, name:"深圳市长帆国际物流股份有限公司", city:"深圳", province:"广东省", rev:null, desc:"深圳本土货代，空运、海运及跨境电商物流快速成长（Long Sail）。"},
+  {rank:49, name:"辽宁港捷国际物流有限公司", city:"大连", province:"辽宁省", rev:null, desc:"大连空运货代企业，东北亚航线与航空货运代理。"},
+  {rank:50, name:"江苏众诚国际物流有限公司", city:"南京", province:"江苏省", rev:null, desc:"南京货代企业，空运、海运及工程物流服务。"}
+];
+
+let view='card';
+let sortKey='rank';
+let sortDir=1;
+
+function fmtRev(v){
+  if(v===null) return {na:true, text:"未公开"};
+  return {na:false, text: Math.round(v).toLocaleString('zh-CN') + " 万元"};
+}
+
+function getFiltered(){
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  const cf=document.getElementById('cityFilter').value;
+  let list=DATA.filter(d=>{
+    const matchQ = !q || d.name.toLowerCase().includes(q) || d.city.toLowerCase().includes(q) || d.province.toLowerCase().includes(q);
+    const matchC = !cf || d.city===cf;
+    return matchQ && matchC;
+  });
+  list.sort((a,b)=>{
+    let va,vb;
+    if(sortKey==='rev'){ va=a.rev??-1; vb=b.rev??-1; }
+    else if(sortKey==='rank'){ va=a.rank; vb=b.rank; }
+    else if(sortKey==='name'){ va=a.name; vb=b.name; }
+    else if(sortKey==='city'){ va=a.province+a.city; vb=b.province+b.city; }
+    if(va<vb) return -1*sortDir;
+    if(va>vb) return 1*sortDir;
+    return 0;
+  });
+  return list;
+}
+
+function setView(v){
+  view=v;
+  document.getElementById('btnCard').classList.toggle('active', v==='card');
+  document.getElementById('btnTable').classList.toggle('active', v==='table');
+  document.getElementById('cardView').style.display = v==='card'?'grid':'none';
+  document.getElementById('tableView').style.display = v==='table'?'block':'none';
+  render();
+}
+
+function sortBy(k){
+  if(sortKey===k){ sortDir*=-1; } else { sortKey=k; sortDir=1; }
+  render();
+}
+
+function render(){
+  const list=getFiltered();
+  // card
+  const cv=document.getElementById('cardView');
+  cv.innerHTML = list.map(d=>{
+    const r=fmtRev(d.rev);
+    const rc = d.rank<=3 ? ` r${d.rank}` : '';
+    return `<div class="card">
+      <div class="top">
+        <div class="rank${rc}">${d.rank}</div>
+        <div>
+          <div class="name">${d.name}</div>
+          <div class="loc">📍 ${d.province} · ${d.city}</div>
+        </div>
+      </div>
+      <div class="desc">${d.desc}</div>
+      <div class="foot">
+        <div class="rev">
+          <div class="k">空运业务收入（参考）</div>
+          ${r.na ? `<span class="na">未公开</span>` : `<span class="v">${r.text}</span>`}
+        </div>
+        <span class="pill">第 ${d.rank} 名</span>
+      </div>
+    </div>`;
+  }).join('');
+
+  // table
+  document.getElementById('tbody').innerHTML = list.map(d=>{
+    const r=fmtRev(d.rev);
+    const gc = d.rank===1 ? ' g1':'';
+    return `<tr>
+      <td><span class="rk${gc}">${d.rank}</span></td>
+      <td class="td-name">${d.name}</td>
+      <td class="td-loc">${d.province}<br>${d.city}</td>
+      <td class="td-desc">${d.desc}</td>
+      <td class="td-rev ${r.na?'na':''}">${r.text}</td>
+    </tr>`;
+  }).join('');
+
+  // sort arrows
+  ['rank','name','city','rev'].forEach(k=>{
+    const el=document.getElementById('ar-'+k);
+    if(el) el.textContent = (sortKey===k)?(sortDir>0?'▲':'▼'):'';
+  });
+
+  if(list.length===0){
+    cv.innerHTML = '<p style="color:#94a3b8;padding:30px">未找到匹配的企业，请调整搜索或筛选条件。</p>';
+  }
+}
+
+function buildStats(){
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><div class="n">50</div><div class="l">上榜企业（家）</div></div>
+    <div class="stat"><div class="n" id="sCity">—</div><div class="l">总部覆盖城市（个）</div></div>
+    <div class="stat"><div class="n" id="sProv">—</div><div class="l">覆盖省级区域（个）</div></div>
+    <div class="stat"><div class="n">上海</div><div class="l">总部最多城市（19家）</div></div>
+  `;
+  const cities=new Set(DATA.map(d=>d.city));
+  const provs=new Set(DATA.map(d=>d.province));
+  document.getElementById('sCity').textContent=cities.size;
+  document.getElementById('sProv').textContent=provs.size;
+
+  // city filter options
+  const cf=document.getElementById('cityFilter');
+  [...cities].sort().forEach(c=>{
+    const o=document.createElement('option');o.value=c;o.textContent=c;cf.appendChild(o);
+  });
+
+  document.getElementById('note').innerHTML =
+    '<b>数据说明：</b>① 榜单排名为《2024年度中国国际货代物流行业数据 · 空运业务总收入前50企业》，由中国国际货运代理协会（CIFA）于 2025年9月25日发布，按企业 2024 年度空运业务总收入排序。'+
+    '② 「空运业务收入（参考）」列：CIFA 蓝皮书未逐家公开 2024 年度空运营收，表中数字为可查证的<b>2017年度空运营业额（万元，CIFA历史公开数据）</b>，仅作量级参考；标「未公开」者表示无公开分项营收。'+
+    '③ 「总部地区」为企业主要注册/运营总部所在地，部分企业设有多地分支机构。';
+}
+
+function zoomQR(src){
+  const z=document.getElementById('qrZoom');
+  z.querySelector('img').src=src;
+  z.classList.add('show');
+}
+function closeQR(){
+  document.getElementById('qrZoom').classList.remove('show');
+}
+
+buildStats();
+render();
+</script>
+</body>
+</html>
